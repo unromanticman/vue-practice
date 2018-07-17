@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <div v-html="message"></div>
     <ul>
       <li>
         <a
@@ -88,7 +89,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '這是我的Vue.js練習紀錄'
+      msg: '這是我的Vue.js練習紀錄',
+      message:'<div>利用 v-html 建立一個div</div>'
     }
   }
 }
