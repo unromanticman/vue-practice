@@ -2,7 +2,9 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
-    <div v-html="message"></div>
+    <label>開關框框</label>
+    <input type="checkbox"  v-model="box" />
+    <div v-bind:class="{'box':box}" v-html="message"></div>
     <ul>
       <li>
         <a
@@ -86,19 +88,21 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: '這是我的Vue.js練習紀錄',
-      message:'<div>利用 v-html 建立一個div</div>'
-    }
+      msg: "這是我的Vue.js練習紀錄",
+      message: "<div>利用 v-html 建立一個div</div>",
+      box: true
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
@@ -111,5 +115,8 @@ li {
 }
 a {
   color: #42b983;
+}
+.box {
+  border: #42b983 solid 1px;
 }
 </style>
