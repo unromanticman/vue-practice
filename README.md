@@ -41,3 +41,11 @@ On Windows Shift + Alt + F
 On Mac Shift + Option + F
 On Ubuntu Ctrl + Shift + I
 ```
+
+## 利用官方 vue-cli 建立專案
+1.npm install --global vue-cli  
+2.vue init webpack my-project（接下來是專案的設定選項，默認即可。）  
+3.cd project  
+4.npm run dev  
+5.至瀏覽器打開 http://localhost:8080/ 即可顯示畫面  
+
