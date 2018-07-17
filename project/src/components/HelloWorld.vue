@@ -3,7 +3,6 @@
     <h1>{{ msg }}</h1>
     <label>用戶輸入框：</label><input v-model="msg"/>
     <button v-on:click="showUserInput">點我</button>
-
     <div v-if="msg.length > 5" >
       你目前輸入的字大於5
     </div>
@@ -15,80 +14,23 @@
     <input type="checkbox"  v-model="box" />
     <div v-bind:class="{'box':box}" v-html="message"></div>
     <ul>
-      <li>
+       <li v-for="item in vue_links.slice(0,4)" v-bind:key="item" >
         <a
-          href="https://vuejs.org"
+          :href="item.name"
           target="_blank"
         >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
+        {{ item.name }}
         </a>
       </li>
     </ul>
     <h2>Ecosystem</h2>
     <ul>
-      <li>
+      <li v-for="item in vue_links.slice(4,8)" v-bind:key="item" >
         <a
-          href="http://router.vuejs.org/"
+          :href="item.name"
           target="_blank"
         >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
+        {{ item.name }}
         </a>
       </li>
     </ul>
@@ -102,7 +44,41 @@ export default {
     return {
       msg: "這是我的Vue.js練習紀錄",
       message: "<div>利用 v-html 建立一個div</div>",
-      box: true
+      box: true,
+      vue_links: [
+        {
+          name: "Core Docs",
+          url: "https://vuejs.org"
+        },
+        {
+          name: "Forum",
+          url: "https://forum.vuejs.org"
+        },
+        {
+          name: "Community Chat",
+          url: "https://chat.vuejs.org"
+        },
+        {
+          name: "Twitter",
+          url: "http://vuejs-templates.github.io/webpack/"
+        },
+        {
+          name: "Docs for This Template",
+          url: "http://router.vuejs.org/"
+        },
+        {
+          name: "vue-router",
+          url: "http://vuex.vuejs.org/"
+        },
+        {
+          name: "vue-loader",
+          url: "http://vue-loader.vuejs.org/"
+        },
+        {
+          name: "awesome-vue",
+          url: "https://github.com/vuejs/awesome-vue"
+        }
+      ]
     };
   },
   methods: {
