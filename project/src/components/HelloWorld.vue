@@ -9,6 +9,9 @@
     <div v-else>
       你目前輸入不到5個字
     </div>
+    <div>
+      輸入文字反轉：{{reversedMsg}}
+    </div>
     <h2>Essential Links</h2>
     <label>開關框框</label>
     <input type="checkbox"  v-model="box" />
@@ -84,6 +87,12 @@ export default {
   methods: {
     showUserInput: function() {
       alert(this.msg);
+    }
+  },
+  computed:{
+    reversedMsg: function () {
+      //反轉文字
+      return this.msg.split('').reverse().join('')
     }
   }
 };
