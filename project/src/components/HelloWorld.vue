@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <label>用戶輸入框：</label><input v-model="msg"/>
+    <button v-on:click="showUserInput">點我</button>
     <h2>Essential Links</h2>
     <label>開關框框</label>
     <input type="checkbox"  v-model="box" />
@@ -95,6 +97,11 @@ export default {
       message: "<div>利用 v-html 建立一個div</div>",
       box: true
     };
+  },
+  methods: {
+    showUserInput: function () {
+      alert(this.msg);
+    }
   }
 };
 </script>
