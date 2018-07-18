@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <label>用戶輸入框：</label><input v-model="msg"/>
+    <label>用戶輸入框：</label><input v-model="msg" v-focus/>
     <button v-on:click="showUserInput">點我</button>
     <div v-if="msg.length > 5" >
       你目前輸入的字大於5
@@ -149,6 +149,14 @@ export default {
         .split("")
         .reverse()
         .join("");
+    }
+  },
+  directives: {
+    focus: {
+      //directives 定義
+      inserted: function(el) {
+        el.focus();
+      }
     }
   },
   watch: {
