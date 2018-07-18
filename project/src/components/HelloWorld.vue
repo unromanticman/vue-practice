@@ -118,7 +118,31 @@ export default {
       accept: "同意"
     };
   },
+  mounted: function() {
+    this.$nextTick(function() {
+      this.getData();
+    });
+  },
   methods: {
+    init: function() {
+      this.getData();
+    },
+    getData: function() {
+      this.$http
+        .get("https://www.google.com/", {
+          params: {}
+        })
+        .then(
+          response => {
+            console.log(response);
+            console.log("請求成功");
+          },
+          response => {
+            console.log(response);
+            console.log("請求失敗");
+          }
+        );
+    },
     showUserInput: function() {
       alert(this.msg);
     },

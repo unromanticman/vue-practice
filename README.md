@@ -49,3 +49,10 @@ On Ubuntu Ctrl + Shift + I
 4.npm run dev  
 5.至瀏覽器打開 http://localhost:8080/ 即可顯示畫面  
 
+## Vue套件安裝
+#### vue-resource
+用於 http get / post / put / delete 使用
+```  
+npm install vue-resource --save
+```
+
