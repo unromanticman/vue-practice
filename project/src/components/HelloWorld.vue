@@ -16,6 +16,12 @@
     <label>開關框框</label>
     <input type="checkbox"  v-model="box" />
     <div v-bind:class="{'box':box}" v-html="message"></div>
+    <div>單位轉換器</div>
+    <div id = "computed_props">
+      公里 : <input type = "text" v-model = "kilometers">
+      公尺: <input type = "text" v-model = "meters">
+    </div>
+    <div id="info"></div>
     <ul>
        <li v-for="item in vue_links.slice(0,4)" v-bind:key="item" >
         <a
@@ -81,7 +87,9 @@ export default {
           name: "awesome-vue",
           url: "https://github.com/vuejs/awesome-vue"
         }
-      ]
+      ],
+      kilometers: 0,
+      meters: 0
     };
   },
   methods: {
@@ -89,15 +97,30 @@ export default {
       alert(this.msg);
     }
   },
-  computed:{
-    reversedMsg: function () {
+  computed: {
+    reversedMsg: function() {
       //反轉文字
-      return this.msg.split('').reverse().join('')
+      return this.msg
+        .split("")
+        .reverse()
+        .join("");
+    }
+  },
+  watch: {
+    meters: function(val, oldVal) {
+      this.kilometers = val / 1000;
+      this.meters = val;
+    },
+    kilometers: function(val, oldVal) {
+      this.kilometers = val;
+      this.meters = val * 1000;
+      console.log(
+        "先前的kilometers值" + oldVal + "更改之後的kilometers值" + val
+      );
     }
   }
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
