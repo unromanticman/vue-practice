@@ -22,6 +22,42 @@
       公尺: <input type = "text" v-model = "meters">
     </div>
     <div id="info"></div>
+    <div>意見回饋表</div>
+    <form>
+      <div>
+        使用者名稱：
+        <input v-model="user_name" placeholder="請輸入使用者名稱"/>
+      </div>
+      <div>
+        使用者性別：
+        <select v-model="gender" name="gender">
+          <option value="男">男</option>
+          <option value="女">女</option>
+          <option value="保密">保密</option>
+        </select>
+      </div>
+      <div>
+        使用者興趣：
+        <input type="checkbox" value="看書" v-model="interest">
+        <label>看書</label>
+        <input type="checkbox" value="旅遊" v-model="interest">
+        <label>旅遊</label>
+        <input type="checkbox" value="喝咖啡" v-model="interest">
+        <label>喝咖啡</label>
+      </div>
+      <div>
+        使用者意見：
+        <textarea v-model="feedback" placeholder="請輸入您的意見"></textarea>
+      </div>
+      <input type="radio" value="同意" v-model="accept">
+      <label>同意</label>
+      <br/>
+      <input type="radio" value="不同意" v-model="accept">
+      <label>不同意</label>
+      <br/>
+      <button v-on:click="SendFeedBack">送出</button>
+    </form>
+
     <ul>
        <li v-for="item in vue_links.slice(0,4)" v-bind:key="item" >
         <a
@@ -89,12 +125,36 @@ export default {
         }
       ],
       kilometers: 0,
-      meters: 0
+      meters: 0,
+      user_name: "",
+      gender: "保密",
+      interest: [],
+      feedback: "",
+      accept: "同意"
     };
   },
   methods: {
     showUserInput: function() {
       alert(this.msg);
+    },
+    SendFeedBack: function() {
+      if (this.accept == "同意") {
+        alert(
+          "送出表單，內容：\n名稱" +
+            this.user_name +
+            "\n" +
+            "性別" +
+            this.gender +
+            "\n" +
+            "興趣" +
+            this.interest +
+            "\n" +
+            "意見" +
+            this.feedback
+        );
+      } else {
+        alert('請先勾選同意')
+      }
     }
   },
   computed: {
