@@ -57,34 +57,19 @@
       <br/>
       <button v-on:click="SendFeedBack">送出</button>
     </form>
-
-    <ul>
-       <li v-for="item in vue_links.slice(0,4)" v-bind:key="item" >
-        <a
-          :href="item.name"
-          target="_blank"
-        >
-        {{ item.name }}
-        </a>
-      </li>
-    </ul>
+    <list :list="vue_links.slice(0,4)"/>
     <h2>Ecosystem</h2>
-    <ul>
-      <li v-for="item in vue_links.slice(4,8)" v-bind:key="item" >
-        <a
-          :href="item.name"
-          target="_blank"
-        >
-        {{ item.name }}
-        </a>
-      </li>
-    </ul>
+    <list :list="vue_links.slice(4,8)"/>
   </div>
 </template>
 
 <script>
+import List from "../components/list.vue";
 export default {
   name: "HelloWorld",
+  components: {
+    List
+  },
   data() {
     return {
       msg: "這是我的Vue.js練習紀錄",
@@ -153,7 +138,7 @@ export default {
             this.feedback
         );
       } else {
-        alert('請先勾選同意')
+        alert("請先勾選同意");
       }
     }
   },
@@ -186,17 +171,6 @@ export default {
 h1,
 h2 {
   font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 .box {
   border: #42b983 solid 1px;
